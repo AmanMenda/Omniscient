@@ -15,7 +15,7 @@ jobs:
       with:
         ref: 'Staging'
     - name: Add TOKEN variable inside a .config file
-      run: echo ${{ secrets.TOKEN }} > .config && cat .config
+      run: echo "TOKEN=${{ secrets.TOKEN }}" > .config && cat .config
 
   build:
     runs-on: ubuntu-latest
