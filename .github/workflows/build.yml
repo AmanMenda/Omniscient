@@ -20,13 +20,11 @@ jobs:
       with:
         python-version: '3.9'
 
+    - uses: actions/checkout@v3
     - name: build dependencies and test discord module
-      run: |
-        make setup
-        python3.9 -c 'import discord;print(discord)'
+      run: make setup
       timeout-minutes: 2
-      
+
     - uses: actions/checkout@v3
     - name: Remove the venv and __pycache__
       run: make clean
-    
