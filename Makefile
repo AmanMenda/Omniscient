@@ -13,8 +13,7 @@ setup:	requirements.txt
 # refresh your virtual environment and run your app with this virtual environment.
 $(VENV)/bin/activate:	requirements.txt
 	python3.9 -m venv ${VENV}
-	source ${VENV}/bin/activate
-	pip install -r requirements.txt
+	${VENV}/bin/pip install -r requirements.txt
 
 clean:
 	rm -rf src/__pycache__
