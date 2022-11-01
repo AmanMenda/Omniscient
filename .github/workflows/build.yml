@@ -20,10 +20,10 @@ jobs:
       with:
         python-version: '3.9'
 
+    - uses: actions/checkout@v3
     - name: build dependencies and test discord module
       run: |
-        make setup
-        python3.9 -c 'import discord;print(discord)'
+        make setup && python3.9 -c 'import discord;print(discord)'
       timeout-minutes: 2
       
     - uses: actions/checkout@v3
