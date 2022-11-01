@@ -7,8 +7,7 @@ PIP := $(VENV)/bin/pip
 run:	$(VENV)/bin/activate
 	${PYTHON} src/main.py
 
-setup:	requirements.txt
-	pip install -r requirements.txt
+setup:	$(VENV)/bin/activate
 
 # refresh your virtual environment and run your app with this virtual environment.
 $(VENV)/bin/activate:	requirements.txt
