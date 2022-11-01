@@ -23,7 +23,7 @@ jobs:
     - name: build dependencies and test discord module
       run: |
         make setup
-        .env/bin/python3.9 -c 'import discord;print(discord)'
+        python3.9 -c 'import discord;print(discord)'
       timeout-minutes: 2
 
   check_repository_cleanliness:
