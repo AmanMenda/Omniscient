@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  push:
+    branches: [Staging]
+  pull_request:
+    branches: [Staging]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check-out repository under $GITHUB_WORKSPACE
+      uses: actions/checkout@v3
+      with:
+        ref: 'Staging'
+
+    - name: Setup
+      run: make setup
+
+    - name: Set environment
+      run: source .env/bin/activate
+
+    - name: Run bot
+      run: make run
+      with:
+        timeout-minutes: 2
+
+    - name: Push on default branch
+      run: git push origin ${{ github.event.repository.default_branch }}
