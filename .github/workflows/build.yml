@@ -25,10 +25,8 @@ jobs:
         make setup
         python3.9 -c 'import discord;print(discord)'
       timeout-minutes: 2
-
-  check_repository_cleanliness:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
+      
+    - uses: actions/checkout@v3
     - name: Remove the venv and __pycache__
       run: make clean
+    
