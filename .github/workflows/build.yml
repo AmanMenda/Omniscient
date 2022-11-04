@@ -35,7 +35,9 @@ jobs:
     needs: [build]
 
     steps:
+      - uses: actions/checkout@v3
       - name: install pytest
+        run: |
           pip --version
           pip install -U pytest
 
