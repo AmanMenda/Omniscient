@@ -1,20 +1,36 @@
 #!/usr/bin/python3.9
 
 import os
-import discord
 from dotenv import load_dotenv
 
+import discord
+from discord.ext import commands
+
+# loading environment config
 load_dotenv(dotenv_path=".config")
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print(f'Logged on as {self.user}!')
+# getting discord bot token
+token = os.getenv("TOKEN")
 
-    async def on_message(self, message):
-        print(f'Message from {message.author}: {message.content}')
+intents = discord.Intents.all()
 
-intents = discord.Intents.default()
-intents.message_content = True
+bot = commands.Bot(command_prefix="!", intents=intents)
 
-client = MyClient(intents=intents)
-client.run(os.getenv("TOKEN"))
+@bot.event
+async def on_ready():
+        print(f'Logged on as {bot.user}!')
+
+@bot.event
+async def on_message(message):
+    print(f'Message from {message.author}: {message.content}') # print message
+    await bot.process_commands(message) ## needed to prossess commands cause we are overriding on_message method !!
+    ## do not remove pls (aman never remove this !!!!!)
+    # without it i was going crazy
+
+# sample test command
+@bot.command()
+async def test(ctx):
+    await ctx.send('/tts Bitch \nlol')
+
+# running bot
+bot.run(token)
