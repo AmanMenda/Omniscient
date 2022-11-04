@@ -1,4 +1,4 @@
-name: Build
+name: CI
 
 on:
   push:
@@ -9,22 +9,39 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
     steps:
-    - name: Check-out repository under $GITHUB_WORKSPACE
-      uses: actions/checkout@v3
-      with:
-        ref: 'Staging'
+      - name: Set up ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install python3.9
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          python${{ matrix.python-version }} -m pip install --upgrade pip
+          pip --version
+          make setup
+  
+      - uses: actions/checkout@v3
+      - name: Remove the venv and __pycache__
+        run: make clean
+  
+  features_tests:
+    runs-on: ubuntu-latest
+    needs: [build]
 
-    - uses: actions/checkout@v3
-    - name: build dependencies and test discord module
-      run: make setup
-      timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v3
+      - name: install pytest
+        run: |
+          pip --version
+          pip install -U pytest
 
-    - uses: actions/checkout@v3
-    - name: Remove the venv and __pycache__
-      run: make clean
+      - uses: actions/checkout@v3
+      - name: Run tests with pytest
+        run: |          
+          make tests_run
