@@ -1,6 +1,9 @@
 #!/usr/bin/python3.9
-from config import bot, token
+from config import bot, token, asyncio
 from commands import ping
+from commands import echo
+from commands import purge
+from commands import kick_mute_ban
 
 @bot.event
 async def on_ready():

@@ -1,6 +1,3 @@
-
-PYTHON_CMD=$(shell which python3)
-
 VENV := .env
 PYTHON := $(VENV)/bin/python3
 PIP := $(VENV)/bin/pip
@@ -15,7 +12,7 @@ setup:	$(VENV)/bin/activate
 
 # refresh your virtual environment and run your app with this virtual environment.
 $(VENV)/bin/activate:	requirements.txt
-	python3 -m venv ${VENV}
+	python3.9 -m venv ${VENV}
 	${VENV}/bin/pip install -r requirements.txt
 
 # run tests

@@ -1,7 +1,8 @@
 import os
-import discord
+import discord, asyncio
 from dotenv import load_dotenv
 from discord.ext import commands
+from discord.ext.commands import has_permissions, MissingPermissions
 
 # loading environment config
 load_dotenv(dotenv_path=".config")
