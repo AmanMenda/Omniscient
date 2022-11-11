@@ -8,7 +8,7 @@ class HelpEmbed(discord.Embed):
         self.set_footer(text=text)
         self.color = discord.Color.blurple()
 
-class HelpCommand(commands.HelpCommand):
+class Help(commands.HelpCommand):
     async def send_bot_help(self, mapping):
         '''triggers when a `!help` is called'''
         ctx = self.context

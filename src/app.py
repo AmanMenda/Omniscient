@@ -4,7 +4,7 @@ from config import bot, token, info_channel, discord
 from commands import ping
 from commands import echo
 from commands import purge
-from commands import kick_mute_ban
+from commands import kick
 
 @bot.event
 async def on_ready():
