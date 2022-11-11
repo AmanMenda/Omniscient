@@ -1,8 +1,16 @@
+VENV := .env
+PYTHON := $(VENV)/bin/python3
+PIP := $(VENV)/bin/pip
+
 .PHONY: run clean
+
+#ifeq (${PYTHON_VERSION_CHECK}, 0)
+#	$(error "Require python version ${PYTHON_MIN_VERSION} or higher")
+#endif
 
 # Run with the venv python instead of the system one
 run:	$(VENV)/bin/activate
-	${PYTHON} src/app.py
+	${PYTHON} src/main.py
 
 setup:	$(VENV)/bin/activate
 
@@ -17,6 +25,5 @@ tests_run:
 
 clean:
 	rm -rf src/__pycache__
-	rm -rf src/commands/__pycache__
 	rm -rf tests/__pycache__
 	rm -rf ${VENV}
