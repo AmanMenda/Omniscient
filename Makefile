@@ -23,6 +23,7 @@ tests_run:
 
 clean:
 	rm -rf src/__pycache__
-	rm -rf src/help/__pycache__
 	rm -rf src/commands/__pycache__
+	rm -rf src/events/__pycache__
+	rm -rf tests/__pycache__
 	rm -rf ${VENV}
