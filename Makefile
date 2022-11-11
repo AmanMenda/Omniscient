@@ -2,7 +2,7 @@
 
 # Run with the venv python instead of the system one
 run:	$(VENV)/bin/activate
-	${PYTHON} src/main.py
+	${PYTHON} src/app.py
 
 setup:	$(VENV)/bin/activate
 
@@ -17,5 +17,6 @@ tests_run:
 
 clean:
 	rm -rf src/__pycache__
+	rm -rf src/commands/__pycache__
 	rm -rf tests/__pycache__
 	rm -rf ${VENV}
