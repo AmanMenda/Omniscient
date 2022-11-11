@@ -10,7 +10,6 @@ load_dotenv(dotenv_path=".config")
 
 # getting discord bot token
 token = os.getenv("TOKEN")
-info_channel = os.getenv("INFO_EVENT_CHANNEL")
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
 bot.help_command = HelpCommand()
