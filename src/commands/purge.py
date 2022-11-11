@@ -1,8 +1,7 @@
 from config import bot, commands
-from config import has_permissions, MissingPermissions
 
-@bot.command()
-@has_permissions(manage_messages=True)
+@bot.command(help="Delete a number n of messages")
+@commands.has_permissions(manage_messages=True)
 async def purge(ctx, n: int):
     messages_history = [message async for message in ctx.channel.history(limit=n + 1)]
     for message in messages_history:

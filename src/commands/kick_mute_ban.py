@@ -4,7 +4,7 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 
 #check if the person who is using this command is an admin
-@bot.command(name='kick')
+@bot.command(name='kick', hidden=True, help="Kick a member")
 async def kick(ctx, member: discord.Member, *, reason=None):
     if ctx.author.top_role.permissions.administrator:
         await member.kick(reason=reason)
@@ -19,7 +19,7 @@ async def kick_err(ctx, error):
 
 
 #Ban a member
-@bot.command()
+@bot.command(hidden=True, help="Ban a member")
 async def ban(ctx, member: discord.Member, *, reason=None):
     if ctx.author.top_role.permissions.administrator:
         await member.ban(reason=reason)
@@ -36,7 +36,7 @@ async def ban_err(ctx, error):
 
 
 #unban a banned member
-@bot.command()
+@bot.command(hidden=True, help="Unban a member")
 async def unban(ctx, member: discord.Member, *, reason=None):
     if ctx.author.top_role.permissions.administrator:
         await member.unban(reason=reason)
