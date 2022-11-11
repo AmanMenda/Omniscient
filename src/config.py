@@ -1,7 +1,7 @@
 import os
 import discord, asyncio
 from dotenv import load_dotenv
-from discord.ext import commands    
+from discord.ext import commands
 from help.help import Help
 from help.helpCog import HelpCog, setup
 
