@@ -10,7 +10,7 @@ PIP := $(VENV)/bin/pip
 
 # Run with the venv python instead of the system one
 run:	$(VENV)/bin/activate
-	${PYTHON} src/main.py
+	${PYTHON} src/app.py
 
 setup:	$(VENV)/bin/activate
 
