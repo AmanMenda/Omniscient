@@ -1,2 +1,6 @@
+#personal config
 .env/
 .config
+
+#useless folder
+*__pycache__
